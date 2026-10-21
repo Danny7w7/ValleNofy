@@ -2,7 +2,7 @@
 
 **Cinco canciones para arrancar. Toda una parranda por descubrir.**
 
-Aplicación académica de recomendación de vallenato, creada a partir de la idea de **Jorge Torres**. El nombre combina *vallenato* y *Spotify*. El catálogo curado está limitado a grabaciones publicadas hasta **2013 inclusive**, con canciones de **La 9a Batalla** y de épocas anteriores. Al buscar por título o intérprete también se consultan canciones de Apple Music Colombia con año confirmado hasta 2013.
+Aplicación académica de recomendación de vallenato, creada a partir de la idea de **Danny Zabaleta**. El nombre combina *vallenato* y *Spotify*. El catálogo curado está limitado a grabaciones publicadas hasta **2013 inclusive**, con canciones de **La 9a Batalla** y de épocas anteriores. Al buscar por título o intérprete también se consultan canciones de Apple Music Colombia con año confirmado hasta 2013.
 
 El usuario escoge cinco canciones, recibe sugerencias y responde con expresiones costeñas. Sus gustos quedan en una biblioteca por navegador, almacenada en SQLite.
 
