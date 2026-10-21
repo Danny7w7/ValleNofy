@@ -3,10 +3,9 @@ import { useId } from 'react'
 export function BrandMark({ className = '' }) {
   return (
     <svg className={className} viewBox="0 0 48 48" fill="none" aria-hidden="true">
-      <circle cx="24" cy="23" r="20" fill="currentColor" opacity=".13" />
-      <path d="M9 32V18l8 3 14-5 8 3v14l-8-3-14 5z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-      <path d="M21 21v10m5-12v10m5-11v10M13 23v5m22-4v4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
-      <path d="M17 10l-1-3m8 2V5m7 6 2-3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      <rect x="2" y="2" width="44" height="44" rx="15" fill="#ff6249" />
+      <path d="m12 15 5 20h14l5-20h-7l-5 13-5-13Z" fill="#fff9ec" />
+      <circle cx="36" cy="11" r="4" fill="#ffe45c" />
     </svg>
   )
 }
@@ -14,88 +13,75 @@ export function BrandMark({ className = '' }) {
 function Accordion({ x = 0, y = 0, scale = 1 }) {
   return (
     <g transform={`translate(${x} ${y}) scale(${scale})`}>
-      <path d="M18 31Q-3 9 6-4Q13-12 30 5M184 24q26-30 32-14t-18 47" fill="none" stroke="#e6b568" strokeWidth="7" opacity=".7" />
-      <path d="m48 10 101-15 6 128-103-12Z" fill="#173335" stroke="#dfac65" strokeWidth="2" />
-      {Array.from({ length: 11 }, (_, i) => (
-        <path key={i} d={`m${52 + i * 9} ${9 - i * 1.4} 3 105`} stroke={i % 2 ? '#688778' : '#edc28a'} strokeWidth="3" />
-      ))}
-      <path d="m9 9 35-4 6 112-35 5Q2 73 9 9Z" fill="#df7861" stroke="#f2c68c" strokeWidth="2" />
-      <path d="m151-7 37 9 7 111-37 14Z" fill="#e8c997" stroke="#f8dfb4" strokeWidth="2" />
-      {Array.from({ length: 7 }, (_, i) => (
-        <g key={i} transform={`translate(0 ${i * 13})`}>
-          <path d="m154 5 33 6m-32 6 32 6" stroke="#33413a" strokeWidth="1.2" />
-          <path d="m155 9 19 4 1 6-20-4Z" fill="#27322c" />
-        </g>
-      ))}
-      {Array.from({ length: 6 }, (_, i) => (
-        <g key={i} fill="#f8dfb4"><circle cx="20" cy={23 + i * 14} r="3" /><circle cx="33" cy={28 + i * 14} r="3" /></g>
-      ))}
-      <path d="m13 115 34-5m111 9 35-12" stroke="#a45b43" strokeWidth="5" />
+      <path d="M23 14C-6-13-14 8 8 50m176-35c29-35 45-7 20 29" fill="none" stroke="#172b35" strokeWidth="7" />
+      <path d="m44 12 108-16 5 122-108-10Z" fill="#172b35" stroke="#fff5d8" strokeWidth="3" />
+      {Array.from({ length: 11 }, (_, i) => <path key={i} d={`m${49 + i * 10} ${12 - i * 1.5} 4 ${94 + i * 2}`} stroke={i % 2 ? '#ffe45c' : '#fff5d8'} strokeWidth="4" />)}
+      <path d="m5 13 38-6 7 107-38 6Z" fill="#ff6249" stroke="#172b35" strokeWidth="4" strokeLinejoin="round" />
+      <path d="m153-6 41 9 6 107-42 13Z" fill="#fff9ec" stroke="#172b35" strokeWidth="4" strokeLinejoin="round" />
+      {Array.from({ length: 7 }, (_, i) => <g key={i} transform={`translate(0 ${i * 14})`}><path d="m156 6 38 7" stroke="#172b35" strokeWidth="2" /><path d="m157 10 23 4v7l-23-4Z" fill="#172b35" /></g>)}
+      {Array.from({ length: 6 }, (_, i) => <g key={i} fill="#fff9ec"><circle cx="17" cy={26 + i * 14} r="3" /><circle cx="31" cy={29 + i * 14} r="3" /></g>)}
     </g>
   )
 }
 
+function Star({ x, y, size = 20, color = '#ffe45c' }) {
+  return <path transform={`translate(${x} ${y}) scale(${size / 20})`} d="m0-20 5 13 13-7-7 13 13 5-13 5 7 13-13-7-5 13-5-13-13 7 7-13-13-5 13-5-7-13 13 7Z" fill={color} />
+}
+
 export function CoastalArt({ className = '', compact = false }) {
-  const id = useId().replace(/:/g, '')
   return (
-    <svg className={`coastal-art ${className}`} viewBox="0 0 440 430" fill="none" aria-hidden="true">
-      <defs>
-        <linearGradient id={`${id}-sky`} x1="220" y1="35" x2="220" y2="390" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#e8b46d" /><stop offset="1" stopColor="#bd6048" />
-        </linearGradient>
-        <clipPath id={`${id}-arch`}><path d="M48 387V193a172 172 0 0 1 344 0v194Z" /></clipPath>
-      </defs>
-      <path d="M35 392V193a185 185 0 0 1 370 0v199" stroke="#b69765" opacity=".28" />
-      <g clipPath={`url(#${id}-arch)`}>
-        <path d="M48 387V193a172 172 0 0 1 344 0v194Z" fill={`url(#${id}-sky)`} />
-        <circle cx="235" cy="162" r="73" fill="#f9dda0" />
-        <path d="m30 285 83-95 45 39 47-47 73 83 61-56 82 80v110H30Z" fill="#49645a" />
-        <path d="m24 307 92-62 70 41 72-35 58 36 104-36v157H24Z" fill="#2f4b45" />
-        <path d="M39 329q110-40 188-3t180-13v99H39Z" fill="#153b39" />
-        <path d="M63 351q61-18 106-3m111 5q45 14 101-5M84 373q89-22 141 0m72 9q41-13 75-6" stroke="#d8b877" opacity=".32" strokeWidth="2" strokeLinecap="round" />
-        <path d="M348 317q-12-83 3-150" stroke="#203c32" strokeWidth="8" />
-        <path d="M352 170q-52-23-66-1 35-6 66 1m0 0q-23-52-46-44 32 18 46 44m0 0q9-50 34-44-24 22-34 44m0 0q45-29 66-5-35-6-66 5m0 0q39 2 45 32-23-18-45-32" fill="#203c32" />
-        <path d="M78 292q8-44-4-78" stroke="#203c32" strokeWidth="5" />
-        <path d="M74 215q-37-18-49 1 26-7 49-1m0 0q-3-34-23-30 14 9 23 30m0 0q30-32 45-14-27-1-45 14m0 0q34 1 39 22-25-16-39-22" fill="#203c32" />
+    <svg className={`coastal-art ${className}`} viewBox="0 0 480 400" fill="none" aria-hidden="true">
+      <path d="M43 270c17-110 31-164 124-182 93-19 168-32 218 30 50 61 50 155-20 205-70 49-145 29-222 26-77-2-111-8-100-79Z" fill="#f9b7cc" />
+      <path d="M423 299q-18-76-4-134" stroke="#62c5ad" strokeWidth="8" /><path d="M419 169q-36-35-58-12 34-2 58 12m0 0q-14-48-39-40 24 18 39 40m0 0q17-43 36-27-23 10-36 27m0 0q43-26 55 1-33-5-55-1m0 0q38 4 41 34-19-21-41-34" fill="#62c5ad" />
+      <g transform="rotate(-12 230 205)">
+        <rect x="75" y="47" width="300" height="300" rx="22" fill="#087f83" stroke="#172b35" strokeWidth="3" />
+        <path d="M77 99h296M77 294h296" stroke="#62c8ba" strokeWidth="2" />
+        <g className="hero-vinyl">
+        <circle cx="226" cy="199" r="123" fill="#172b35" />
+        {[111, 101, 91, 81].map((r) => <circle key={r} cx="226" cy="199" r={r} stroke="#43525b" strokeWidth="1.5" />)}
+        <circle cx="226" cy="199" r="69" fill="#ffe45c" />
+        <path d="m154 100 23 39m79 122 35 63" stroke="#fff9ec" strokeWidth="18" opacity=".1" />
+        <g transform="rotate(-8 225 200)"><Accordion x={169} y={167} scale={0.58} /></g>
+        </g>
+        <path d="M97 68h45m-45 12h22m183 236h51m-25 11h25" stroke="#fff9ec" strokeWidth="3" strokeLinecap="round" />
       </g>
-      <ellipse cx="220" cy="373" rx="126" ry="16" fill="#101e1b" opacity=".6" />
-      <g transform="rotate(-12 220 275)"><Accordion x={112} y={220} scale={1.08} /></g>
-      <path d="m103 150-8-9m4 22H86m36-28-1-13M331 96l4-12m8 23 12-2" stroke="#f6d692" strokeWidth="2" strokeLinecap="round" />
-      {!compact && <g fill="#dbaf70" opacity=".7"><circle cx="28" cy="240" r="2.5" /><circle cx="410" cy="275" r="2.5" /><path d="m32 102 3 7 7 3-7 3-3 7-3-7-7-3 7-3Zm378 30 2 5 5 2-5 2-2 5-2-5-5-2 5-2Z" /></g>}
+      <Star x={384} y={88} size={48} />
+      <Star x={60} y={301} size={25} color="#fff9ec" />
+      <Star x={412} y={296} size={13} color="#172b35" />
+      <g transform="rotate(10 365 323)"><rect x="273" y="298" width="175" height="47" rx="23" fill="#fff9ec" stroke="#172b35" strokeWidth="2" /><text x="360" y="328" fill="#172b35" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="15" fontWeight="800">HECHO PA’ CANTAR</text></g>
+      {!compact && <><path d="M34 126V83l28-6v35" stroke="#172b35" strokeWidth="4" strokeLinecap="round" /><ellipse cx="26" cy="129" rx="10" ry="7" fill="#172b35" /><ellipse cx="54" cy="115" rx="10" ry="7" fill="#172b35" /><path d="m403 182 15 4m-14 12 18 12m-26 1 8 13" stroke="#172b35" strokeWidth="4" strokeLinecap="round" /></>}
     </svg>
   )
 }
 
 const palettes = [
-  ['#a95f47', '#f3c783', '#273e37'],
-  ['#446a61', '#e8c78c', '#1d3431'],
-  ['#8a643a', '#f1bd65', '#283d36'],
-  ['#625376', '#d5a680', '#292b3b'],
-  ['#49717a', '#e5c38c', '#1d393c'],
+  ['#087f83', '#ffe45c', '#134951'],
+  ['#f55d45', '#ffe998', '#8b3334'],
+  ['#7770c7', '#ffd976', '#3f3a77'],
+  ['#f4b63d', '#fff2bd', '#7c4b2f'],
+  ['#397eb8', '#fbbbd0', '#193e65'],
+  ['#c94c80', '#ffe45c', '#642947'],
 ]
 
 export function SongArt({ song, large = false, className = '' }) {
   const id = useId().replace(/:/g, '')
-  const hash = [...String(song.id)].reduce((value, letter) => value + letter.charCodeAt(0), 0)
+  const hash = [...String(song.id ?? song.title)].reduce((value, letter) => value + letter.charCodeAt(0), 0)
   const [base, sun, dark] = palettes[hash % palettes.length]
-  const color = /^#[0-9a-f]{3,8}$/i.test(song.art_color || '') ? song.art_color : base
   return (
-    <div className={`song-art ${large ? 'song-art-large' : ''} ${className}`} style={{ '--art-color': color }} aria-hidden="true">
-      <svg viewBox="0 0 320 320" fill="none">
-        <defs>
-          <linearGradient id={`${id}-cover`} x1="160" y1="0" x2="160" y2="320" gradientUnits="userSpaceOnUse"><stop stopColor={color} /><stop offset="1" stopColor={dark} /></linearGradient>
-          <pattern id={`${id}-lines`} width="7" height="7" patternUnits="userSpaceOnUse"><path d="M0 0v7" stroke="#fff" strokeOpacity=".035" /></pattern>
-        </defs>
-        <path fill={`url(#${id}-cover)`} d="M0 0h320v320H0z" />
-        <circle cx="160" cy="139" r="91" stroke={sun} opacity=".2" />
-        <circle cx="160" cy="139" r="78" fill={sun} />
-        <path d="m-10 219 64-59 54 39 56-39 68 60 43-29 56 44v95H-10Z" fill={dark} opacity=".9" />
-        <path d="M0 267q78-43 162-3t158-1v57H0Z" fill={dark} />
-        <g transform="rotate(-13 160 175)"><Accordion x={83} y={134} scale={0.73} /></g>
-        <path d="M24 26h31M24 26v31m272-31h-31m31 0v31M24 294h31m-31 0v-31m272 31h-31m31 0v-31" stroke={sun} opacity=".45" />
-        <path d="M0 0h320v320H0z" fill={`url(#${id}-lines)`} />
+    <div className={`song-art ${large ? 'song-art-large' : ''} ${className}`} style={{ '--art-color': base }} aria-hidden="true">
+      <svg viewBox="0 0 400 440" fill="none" preserveAspectRatio="xMidYMid slice">
+        <defs><pattern id={`${id}-dots`} width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#fff9ec" opacity=".16" /></pattern></defs>
+        <path fill={base} d="M0 0h400v440H0z" />
+        <path fill={`url(#${id}-dots)`} d="M0 0h400v440H0z" />
+        <circle cx="202" cy="181" r="121" fill={sun} />
+        <circle cx="202" cy="181" r="141" stroke={sun} opacity=".4" />
+        <path d="m-30 306 85-95 70 56 67-64 87 94 50-58 100 82v139H-30Z" fill={dark} />
+        <path d="M-20 352c115-83 171 27 267-9s124-2 173 23v96H-20Z" fill="#172b35" opacity=".6" />
+        <g transform="rotate(-13 200 204)"><Accordion x={95} y={146} scale={1.05} /></g>
+        <Star x={62} y={114} size={15} color="#fff9ec" />
+        <Star x={337} y={208} size={20} color={sun} />
+        <path d="m310 82 6-16m8 27 16-5M58 236l-16 5m23 8-10 14" stroke="#fff9ec" strokeWidth="3" strokeLinecap="round" />
       </svg>
-      {large && <><span className="cover-label">DE LA TIERRA<br />AL CORAZÓN</span><span className="cover-bottom">VALLE<span>NOFY</span> · SELECCIÓN VALLENATA</span></>}
     </div>
   )
 }

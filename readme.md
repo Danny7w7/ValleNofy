@@ -6,6 +6,8 @@ Aplicación académica de recomendación de vallenato, creada a partir de la ide
 
 El usuario escoge cinco canciones, recibe sugerencias y responde con expresiones costeñas. Sus gustos quedan en una biblioteca por navegador, almacenada en SQLite.
 
+La interfaz abre en **modo oscuro**, con una paleta de Caribe de noche, amarillo, coral y detalles de la bandera colombiana. El botón del encabezado permite cambiar al modo claro y recordar esa preferencia. El descubrimiento usa tarjetas que se arrastran con el dedo o el mouse, y la página incorpora vinilos animados, parallax, entradas progresivas y una franja que se desplaza al hacer scroll.
+
 > **Para el profesor:** el [historial de prompts](#historial-de-prompts-y-actualizaciones) reproduce el mensaje que originó esta aplicación y registra las actualizaciones solicitadas. Es parte de la entrega y debe conservarse en futuras modificaciones.
 
 ## Iniciar con doble clic en Windows
@@ -37,17 +39,21 @@ iniciar.bat --prepare-only
 
 1. Buscar en el catálogo curado o escribir un título o intérprete para consultar Apple Music Colombia. Apple puede clasificar un vallenato con un género general como «Latino», así que el usuario confirma qué resultados son vallenato. Solo se pueden escoger **exactamente cinco canciones diferentes** con año conocido hasta 2013.
 2. Al escoger una canción, aparece su reproductor de Apple Music en el panel de las cinco elegidas. Se puede cambiar la canción del preview con el botón de audífonos junto a cada seleccionada.
-3. Iniciar la parranda para ver una recomendación a la vez, con una explicación de afinidad y su reproductor incrustado. El reproductor no se inicia solo; la muestra puede durar hasta 30 segundos.
+3. Iniciar la parranda para ver una recomendación a la vez en una baraja deslizable, con una explicación de afinidad y su reproductor incrustado. El reproductor no se inicia solo; la muestra puede durar hasta 30 segundos.
 4. Usar **Escuchar en YouTube** o **Escuchar en Spotify** si se quiere buscar la grabación completa. Esos botones abren resultados de búsqueda en otra pestaña. Si Apple Music no encuentra un reproductor compatible, la canción sigue disponible en esos enlaces.
-5. Reaccionar:
+5. Reaccionar con un gesto o con los botones:
 
-| Expresión | Preferencia | Influencia |
-| --- | --- | --- |
-| Esa canción me da sed | Me gusta | Peso positivo 1 |
-| ¡Sírvelooo! | Favorita especial | Peso positivo 3 |
-| Paso, compae | No me gusta | Perfil negativo |
+| Expresión | Preferencia | Influencia | Control |
+| --- | --- | --- | --- |
+| Esa canción me da sed | Me gusta | Peso positivo 1 | Deslizar a la derecha o pulsar su botón |
+| ¡Sírvelooo! | Favorita especial | Peso positivo 3 | Pulsar el corazón amarillo |
+| Paso, compae | No me gusta | Perfil negativo | Deslizar a la izquierda o pulsar la X |
 
-5. Consultar la biblioteca y cambiar una reacción cuando se quiera. Las cinco canciones iniciales también se guardan como gustos normales.
+6. Consultar la biblioteca, abrir el preview desde **Dale oído**, buscar por título o artista y cambiar una reacción cuando se quiera. Las cinco canciones iniciales también se guardan como gustos normales.
+
+Con la tarjeta enfocada, las flechas **←**, **→** y **↑** permiten pasar, indicar que gusta y guardar como favorita especial, respectivamente. Arrastrar una distancia corta devuelve la tarjeta a su sitio. El desplazamiento vertical en móvil permite recorrer la página sin calificar canciones. Una reacción fallida devuelve la tarjeta y permite reintentar; los controles se bloquean durante el guardado para evitar envíos repetidos.
+
+Las animaciones respetan **reducir movimiento** del dispositivo. El scroll se procesa con `requestAnimationFrame`, sin actualizar el estado de React en cada desplazamiento, y las entradas usan `IntersectionObserver`. La preferencia de tema se guarda en `localStorage` bajo `vallenofy-theme`; las canciones y reacciones siguen guardándose en SQLite. Si el navegador bloquea ese almacenamiento, el cambio de tema funciona durante la visita y el siguiente inicio vuelve al modo oscuro.
 
 La última reacción de una canción reemplaza la anterior: no se acumulan votos al pulsar varias veces. Las sugerencias excluyen las cinco canciones iniciales y las ya calificadas. Al completar el catálogo, se muestra un estado de finalización y se puede revisar la biblioteca.
 
@@ -282,3 +288,53 @@ Agregame un boton para poder comenzar de 0
 ```
 
 **Aplicación del cambio:** añadir en Mi biblioteca un botón con confirmación que borra las cinco favoritas y todas las reacciones del perfil del navegador actual, y devuelve al usuario a la selección inicial. El catálogo y los demás perfiles se conservan.
+
+### 9. Orden aleatorio del catálogo inicial — 20 de octubre de 2026
+
+```text
+Colega en los primeros 5 me estas poniendo a diomedes siempre de primero, ponmelo en aleatoreo, en shuffle no se
+```
+
+**Aplicación del cambio:** mezclar aleatoriamente el catálogo inicial cuando se carga sin una búsqueda ni filtro de artista, intercalando intérpretes principales para evitar que las primeras canciones sean todas del mismo cantante. Las búsquedas y filtros conservan sus resultados correspondientes.
+
+### 10. Más canciones visibles y orden variado — 20 de octubre de 2026
+
+```text
+Vamos a ampliar en un 500% la cantidad de canciones que nos aparecen, y no haz correjido lo del orden, me salen al comienzo puras canciones de diomedes
+```
+
+**Aplicación del cambio:** subir de 8 a 48 las canciones mostradas inicialmente (un aumento del 500%) y mezclar el catálogo por intérprete principal para que la lista arranque con artistas variados.
+
+### 11. Rediseño completo y tarjetas deslizables — 20 de octubre de 2026
+
+```text
+Colega, quiero cambiar el front del proyecto, quiero que hagas algo asi como el deslizar para un lado u el otro que hay en tinder, tambien quiero que pongas colores mas llamativos, mejor dicho, que hagas un completo rediseño en todo el proyecto
+```
+
+**Aplicación del cambio:** renovar la selección inicial, el descubrimiento, la biblioteca, los diálogos, el logo y las ilustraciones. Incorporar gestos de mouse y táctiles, umbral de arrastre, recuperación ante errores y controles de teclado. Convertir la biblioteca en una colección de tarjetas con preview desplegable, conservando los filtros, la edición de preferencias y el reinicio del perfil.
+
+### 12. Modo oscuro e identidad costeña — 20 de octubre de 2026
+
+```text
+Papi la quiero en modo oscuro tambien (Que sea el por default y que se sienta un toque colombiana, costeña, tu sabe como e)
+```
+
+**Aplicación del cambio:** establecer el tema oscuro por defecto y ofrecer un selector persistente de modo claro/oscuro. Usar verdes Caribe, amarillo, coral, acentos de la bandera colombiana, un vinilo con acordeón y palmera, y textos con sabor costeño en toda la interfaz.
+
+### 13. Animaciones al hacer scroll — 20 de octubre de 2026
+
+```text
+Y tambien quiero animaciones asi bien cañonas, quiero que a medida que uno vaya haciendo scroll se mueva asi bien cañona la pagina.
+```
+
+**Aplicación del cambio:** añadir movimiento y rotación de ilustraciones ligados al scroll, vinilos giratorios, una etiqueta flotante, entradas progresivas de las secciones y las canciones, una franja tipográfica en movimiento y un indicador de progreso de lectura. Las animaciones se reducen cuando lo solicita el dispositivo, sin afectar los gestos ni el reproductor.
+
+**Comprobación del rediseño:** compilación de producción completada y 20 escenarios de interfaz aprobados en Edge con datos de prueba aislados. Se revisaron temas y persistencia, animaciones, selección de cinco, gestos de mouse y táctiles, desplazamiento vertical, teclado, guardado fallido y reintento, bloqueo de clics repetidos, biblioteca, diálogos y conservación del perfil. Se comprobaron vistas entre 320 y 1440 píxeles sin desbordamiento horizontal; el reproductor volvió a obtener un embed real de Apple Music al habilitar acceso a Internet para el servidor de prueba.
+
+### 14. Corrección del reinicio del perfil — 20 de octubre de 2026
+
+```text
+Arreglame el reiniciar de 0 porfa
+```
+
+**Aplicación del cambio:** al confirmar, eliminar el perfil actual y sus preferencias asociadas, crear un perfil nuevo para la sesión del navegador y abrir explícitamente la selección de cinco canciones.

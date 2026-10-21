@@ -1,6 +1,7 @@
 import { Component, useEffect, useRef, useState } from 'react'
-import { ArrowUpRight, BookOpen, Check, Compass, Cookie, Info, Music2, ShieldCheck, X } from 'lucide-react'
+import { ArrowUpRight, BookOpen, Check, Compass, Cookie, Info, Moon, Music2, ShieldCheck, Sun, X } from 'lucide-react'
 import { api } from './api.js'
+import usePageMotion from './usePageMotion.js'
 import { BrandMark } from './components/Art.jsx'
 import { AboutModal, ErrorNotice, Spinner } from './components/UI.jsx'
 import Onboarding from './components/Onboarding.jsx'
@@ -23,8 +24,16 @@ function ValleNofy() {
   const [view, setView] = useState('discover')
   const [about, setAbout] = useState(false)
   const [toast, setToast] = useState(null)
+  const [theme, setTheme] = useState(() => document.documentElement.dataset.theme === 'light' ? 'light' : 'dark')
   const mainRef = useRef(null)
   const screen = profile?.onboarded ? view : 'onboarding'
+  usePageMotion(mainRef, screen)
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#10272b' : '#fff9ec'
+    try { localStorage.setItem('vallenofy-theme', theme) } catch { /* The toggle also works without storage. */ }
+  }, [theme])
 
   useEffect(() => {
     const controller = new AbortController()
@@ -40,7 +49,7 @@ function ValleNofy() {
 
   useEffect(() => {
     if (!toast) return
-    const timer = setTimeout(() => setToast(null), 5000)
+    const timer = setTimeout(() => setToast(null), 3500)
     return () => clearTimeout(timer)
   }, [toast])
 
@@ -74,17 +83,19 @@ function ValleNofy() {
 
   function profileReset(next) {
     setProfile(next)
-    navigate('discover')
+    navigate('onboarding')
     notify('Listo, compae. Empezamos de cero: elige tus cinco favoritas.')
   }
 
   return (
     <div className="app-shell">
+      <div className="scroll-progress" aria-hidden="true" />
       <a className="skip-link" href="#main-content">Saltar al contenido</a>
       <header className="site-header"><div className="header-inner">
-        <button className="brand" onClick={() => navigate('discover')} aria-label="ValleNofy, inicio"><BrandMark /><span>Valle<span>Nofy</span><small>EL GUSTO DE NUESTRA MÚSICA</small></span></button>
+        <button className="brand" onClick={() => navigate('discover')} aria-label="ValleNofy, inicio"><BrandMark /><span>Valle<span>Nofy</span><small>VALLENATO CON EL CORAZÓN</small></span></button>
+        {!profile?.onboarded && <span className="header-tagline"><span className="colombia-flag" aria-hidden="true" />ACORDEÓN, BRISA Y BUENA PARRANDA.</span>}
         {profile?.onboarded && <nav className="main-nav" aria-label="Navegación principal"><button className={screen === 'discover' ? 'active' : ''} onClick={() => navigate('discover')} aria-current={screen === 'discover' ? 'page' : undefined}><Compass size={17} aria-hidden="true" />Descubrir</button><button className={screen === 'library' ? 'active' : ''} onClick={() => navigate('library')} aria-current={screen === 'library' ? 'page' : undefined}><BookOpen size={17} aria-hidden="true" />Mi biblioteca</button></nav>}
-        <div className="header-actions"><button className="about-button" onClick={() => setAbout(true)}><Info size={16} aria-hidden="true" /><span>Cómo funciona</span></button><span className="profile-badge" title="Tu perfil está vinculado a este navegador"><Music2 size={17} aria-hidden="true" /><span>Tu rincón</span></span></div>
+        <div className="header-actions"><button className="theme-toggle" onClick={() => setTheme((current) => current === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'} title={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}>{theme === 'dark' ? <Sun size={19} aria-hidden="true" /> : <Moon size={19} aria-hidden="true" />}<span>{theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}</span></button><button className="about-button" onClick={() => setAbout(true)} aria-label="Cómo funciona ValleNofy"><Info size={17} aria-hidden="true" /><span>Cómo funciona</span></button><span className="profile-badge" title="Tu perfil está vinculado a este navegador"><Music2 size={18} aria-hidden="true" /><span>Tu parche</span></span></div>
       </div></header>
 
       <main id="main-content" className="main-content" ref={mainRef} tabIndex={-1}>
@@ -95,7 +106,7 @@ function ValleNofy() {
             </>}
       </main>
 
-      <footer className="site-footer"><div className="footer-inner"><div className="footer-signature"><BrandMark /><span>Del Valle, <em>con alma.</em><small>La siguiente buena canción está por llegar.</small></span></div><div className="footer-right"><span className="cookie-note"><ShieldCheck size={14} aria-hidden="true" />Tu perfil, en este navegador.</span><button className="text-button" onClick={() => setAbout(true)}>Sobre ValleNofy<ArrowUpRight size={14} aria-hidden="true" /></button><span className="footer-cookie"><Cookie size={12} aria-hidden="true" />Sin registro · Con cookies de sesión</span></div></div></footer>
+      <footer className="site-footer"><div className="footer-inner"><div className="footer-signature"><BrandMark /><span>Del Valle, <em>con alma.</em><small><span className="colombia-flag" aria-hidden="true" />Alma colombiana. Sabor costeño.</small></span></div><div className="footer-right"><span className="cookie-note"><ShieldCheck size={14} aria-hidden="true" />Tu perfil, en este navegador.</span><button className="text-button" onClick={() => setAbout(true)}>Sobre ValleNofy<ArrowUpRight size={14} aria-hidden="true" /></button><span className="footer-cookie"><Cookie size={12} aria-hidden="true" />Sin registro · Con cookies de sesión</span></div></div></footer>
       <div className="toast-region" role="status" aria-live="polite" aria-atomic="true">{toast && <div className="toast" key={toast.key}><Check size={18} aria-hidden="true" /><span>{toast.message}</span><button className="icon-button" onClick={() => setToast(null)} aria-label="Cerrar aviso"><X size={16} /></button></div>}</div>
       {about && <AboutModal onClose={() => setAbout(false)} />}
     </div>

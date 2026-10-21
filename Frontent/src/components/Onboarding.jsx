@@ -1,9 +1,37 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowLeft, ArrowRight, Check, ChevronDown, Disc3, Headphones, LockKeyhole, Music2, Plus, Search, Sparkles, X } from 'lucide-react'
+import { ArrowDown, ArrowLeft, ArrowRight, Check, ChevronDown, Disc3, Headphones, Heart, LockKeyhole, MoveHorizontal, Music2, Plus, Search, Sparkles, X } from 'lucide-react'
 import { api } from '../api.js'
 import { CoastalArt, SongArt } from './Art.jsx'
-import { ErrorNotice, MusicLinks, Spinner } from './UI.jsx'
+import { CoastalTicker, ErrorNotice, MusicLinks, Spinner } from './UI.jsx'
 import SongPreview from './SongPreview.jsx'
+
+const INITIAL_SONG_LIMIT = 48
+
+function shuffle(values) {
+  for (let index = values.length - 1; index > 0; index -= 1) {
+    const target = Math.floor(Math.random() * (index + 1))
+    ;[values[index], values[target]] = [values[target], values[index]]
+  }
+  return values
+}
+
+function diversifyByLeadArtist(songs) {
+  const grouped = new Map()
+  for (const song of songs) {
+    const leadArtist = song.artist.split(' & ')[0].trim().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase()
+    if (!grouped.has(leadArtist)) grouped.set(leadArtist, [])
+    grouped.get(leadArtist).push(song)
+  }
+  const groups = shuffle([...grouped.values()].map(shuffle))
+  const mixed = []
+  const longestGroup = groups.reduce((longest, group) => Math.max(longest, group.length), 0)
+  for (let index = 0; index < longestGroup; index += 1) {
+    for (const group of groups) {
+      if (group[index]) mixed.push(group[index])
+    }
+  }
+  return mixed
+}
 
 export default function Onboarding({ profile, onComplete, onCancel }) {
   const editing = profile.onboarded
@@ -22,7 +50,7 @@ export default function Onboarding({ profile, onComplete, onCancel }) {
   const [submitError, setSubmitError] = useState('')
   const [retry, setRetry] = useState(0)
   const [seedRetry, setSeedRetry] = useState(0)
-  const [limit, setLimit] = useState(8)
+  const [limit, setLimit] = useState(INITIAL_SONG_LIMIT)
   const [saving, setSaving] = useState(false)
   const searchRef = useRef(null)
   const selectionRef = useRef(null)
@@ -50,11 +78,11 @@ export default function Onboarding({ profile, onComplete, onCancel }) {
     setError('')
     setAppleError('')
     setAppleExcludedCount(0)
-    setLimit(8)
+    setLimit(INITIAL_SONG_LIMIT)
     const timer = setTimeout(() => {
       api.songs(query.trim(), artist, controller.signal).then((data) => {
         if (controller.signal.aborted) return
-        setSongs(data.songs)
+        setSongs(query.trim() || artist ? data.songs : diversifyByLeadArtist(data.songs))
         setAppleError(data.apple_error || '')
         setAppleExcludedCount(data.apple_excluded_count || 0)
         setArtists((current) => [...new Set([...current, ...data.artists])].sort((a, b) => a.localeCompare(b, 'es')))
@@ -108,18 +136,21 @@ export default function Onboarding({ profile, onComplete, onCancel }) {
   return (
     <>
       <section className="onboarding-hero" aria-labelledby="welcome-title">
-        <div className="hero-copy">
-          <div className="eyebrow"><span className="tiny-sun" /> DE NUESTRA TIERRA, PARA TUS OÍDOS</div>
-          <h1 id="welcome-title">Hay canciones<br />que te <em>saben a vida.</em></h1>
-          <p>Un acordeón, un recuerdo y esa canción que nunca falla.<br className="desktop-break" /> Elige tus cinco favoritas. Nosotros ponemos la siguiente.</p>
+        <div className="hero-copy" data-reveal>
+          <div className="eyebrow hero-eyebrow"><span className="colombia-flag" aria-hidden="true" /> DEL CARIBE, CON TODO EL SABOR</div>
+          <h1 id="welcome-title">Tu próximo<br />flechazo suena<br />a <em>vallenato.</em></h1>
+          <p>Ajá, compae. Hay canciones que se sienten como en casa.<br className="desktop-break" /> Elige tus cinco favoritas y que arranque la parranda.</p>
+          <a className="button button-ink hero-cta" href="#selection-title">Encuentra tu ritmo<ArrowDown size={18} aria-hidden="true" /></a>
           <div className="hero-details"><span><Disc3 size={16} aria-hidden="true" /> Vallenato del bueno</span><span className="detail-dot" /><span>Clásicos hasta 2013</span></div>
         </div>
-        <div className="hero-art-wrap"><CoastalArt /><span className="art-handwritten">Donde suena un acordeón,<br />siempre hay una historia.</span></div>
+        <div className="hero-art-wrap" data-parallax="art"><span className="hero-art-note">de la tierrita pa’l corazón.</span><CoastalArt /><span className="hero-sticker"><Heart size={15} fill="currentColor" aria-hidden="true" />Del Valle, con amor</span></div>
       </section>
 
+      <div className="how-it-flows" aria-label="Cómo empieza tu parranda"><span><span className="flow-icon flow-yellow"><Music2 size={19} aria-hidden="true" /></span><span><small>PRIMERO</small>Elige tus cinco</span></span><ArrowRight size={19} aria-hidden="true" /><span><span className="flow-icon flow-pink"><MoveHorizontal size={19} aria-hidden="true" /></span><span><small>DESPUÉS</small>Escucha y desliza</span></span><ArrowRight size={19} aria-hidden="true" /><span><span className="flow-icon flow-teal"><Heart size={19} aria-hidden="true" /></span><span><small>Y QUE SIGA</small>Tu propia parranda</span></span></div>
+
       <section className="onboarding-section" aria-labelledby="selection-title">
-        <div className="section-heading">
-          <div><span className="eyebrow muted">01 / EL COMIENZO DE TU PARRANDA</span><h2 id="selection-title">{editing ? 'Volvamos a tus raíces.' : 'Dinos cuáles son las tuyas.'}</h2><p>{editing ? 'Cambia tus cinco canciones de partida. Tu historial sigue contigo.' : 'Escoge exactamente 5 canciones y encuentra tu próxima favorita.'}</p></div>
+        <div className="section-heading" data-reveal>
+          <div><span className="eyebrow muted">EL PRIMER ACORDE LO PONES TÚ</span><h2 id="selection-title" tabIndex={-1}>{editing ? 'Un nuevo comienzo, el mismo sabor.' : 'Cinco canciones. Mucho de ti.'}</h2><p>{editing ? 'Cambia tus cinco canciones de partida. Tu historial sigue contigo.' : 'Busca esos clásicos que cantarías a todo pulmón. Escoge exactamente 5.'}</p></div>
           {editing ? <button className="text-button" onClick={onCancel} disabled={saving}><ArrowLeft size={16} aria-hidden="true" />Volver</button> : <span className="step-pill"><span>1</span> Elige tus favoritas <ArrowRight size={13} aria-hidden="true" /><span className="step-inactive">2</span> Descubre</span>}
         </div>
         <div className="onboarding-grid">
@@ -140,7 +171,7 @@ export default function Onboarding({ profile, onComplete, onCancel }) {
                 : songs.length === 0 ? <div className="empty-search"><Search size={30} aria-hidden="true" /><h3>Esa tonada no aparece por aquí.</h3><p>Prueba con otro título o artista; solo aparecen canciones con año confirmado hasta 2013.</p><button className="button button-secondary" onClick={() => { setQuery(''); setArtist(''); searchRef.current?.focus() }}>Ver todo el catálogo</button></div>
                   : <><div className="song-list">{songs.slice(0, limit).map((song, index) => {
                     const checked = selectedIds.has(songKey(song))
-                    return <div className={`catalog-song ${checked ? 'is-selected' : ''}`} key={songKey(song)}>
+                    return <div className={`catalog-song ${checked ? 'is-selected' : ''}`} key={songKey(song)} data-reveal>
                       <button type="button" className="song-select-button" onClick={() => toggleSong(song)} disabled={blocked || Boolean(seedError) || (full && !checked)} aria-pressed={checked} aria-label={`${checked ? 'Quitar' : 'Elegir'} ${song.title}, de ${song.artist}`}>
                         <span className="track-number">{String(index + 1).padStart(2, '0')}</span><SongArt song={song} /><span className="song-text"><strong>{song.title}</strong><span>{song.artist}{song.year && <><span className="metadata-dot">·</span>{song.year}</>}</span>{song.genre && <span className="song-genre">Apple: {song.genre}</span>}</span><span className="select-indicator">{checked ? <Check size={17} /> : <Plus size={17} />}</span>
                       </button><MusicLinks song={song} preview />
@@ -149,9 +180,9 @@ export default function Onboarding({ profile, onComplete, onCancel }) {
             <p className="catalog-footnote"><Headphones size={14} aria-hidden="true" />Apple puede usar géneros generales como “Latino”; confirma que la canción sea vallenato antes de elegirla.</p>
           </div>
 
-          <form className="selection-card" onSubmit={submit} aria-labelledby="your-five-title" ref={selectionRef} tabIndex={-1}>
+          <form className="selection-card" onSubmit={submit} aria-labelledby="your-five-title" ref={selectionRef} tabIndex={-1} data-reveal>
             <div className="selection-card-top"><span className="eyebrow"><Sparkles size={14} aria-hidden="true" /> TU ESENCIA VALLENATA</span><span className="selection-count" aria-label={`${selected.length} de 5 canciones elegidas`}>{selected.length}<span>/5</span></span></div>
-            <h3 id="your-five-title">Cinco para empezar.<br /><em>Muchas por descubrir.</em></h3>
+            <h3 id="your-five-title" tabIndex={-1}>Aquí empieza<br /><em>lo bueno.</em></h3>
             <div className="selection-progress" aria-hidden="true">{Array.from({ length: 5 }, (_, index) => <span key={index} className={index < selected.length ? 'filled' : ''} />)}</div>
             <div className="sr-only" role="status" aria-live="polite">{selected.length} de 5 canciones elegidas. {full ? 'Ya puedes comenzar la parranda.' : `Te faltan ${5 - selected.length}.`}</div>
             {hydrating ? <Spinner label="Recuperando tus cinco…" /> : seedError ? <ErrorNotice compact message={seedError} onRetry={() => setSeedRetry((value) => value + 1)} /> : <><ol className="selected-songs">{Array.from({ length: 5 }, (_, index) => {
@@ -164,7 +195,9 @@ export default function Onboarding({ profile, onComplete, onCancel }) {
             <span className="privacy-note"><LockKeyhole size={12} aria-hidden="true" />Sin cuentas. Solo tú y tu música.</span>
           </form>
         </div>
+        <div className="mobile-selection-bar"><span><Music2 size={18} aria-hidden="true" /><strong>{selected.length}/5</strong> elegidas</span><a className="button button-ink" href="#your-five-title">{full ? '¡Vamos a la parranda!' : 'Ver mi selección'}<ArrowRight size={16} aria-hidden="true" /></a></div>
       </section>
+      <CoastalTicker />
     </>
   )
 }

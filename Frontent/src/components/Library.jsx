@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowRight, Beer, Disc3, Heart, RotateCcw, Search, Sprout, X } from 'lucide-react'
+import { ArrowRight, Beer, Disc3, Headphones, Heart, RotateCcw, Search, Sprout, X } from 'lucide-react'
 import { api } from '../api.js'
+import SongPreview from './SongPreview.jsx'
 import { SongArt } from './Art.jsx'
-import { ErrorNotice, MusicLinks, ReactionButtons, ResetProfileDialog, Spinner } from './UI.jsx'
+import { CoastalTicker, ErrorNotice, MusicLinks, ReactionButtons, ResetProfileDialog, Spinner } from './UI.jsx'
 
 const tabs = [
   { id: 'seeds', label: 'Mis cinco', Icon: Sprout, description: 'Las canciones con las que empezó tu historia.' },
@@ -19,6 +20,7 @@ export default function Library({ profile, onProfile, onReset, onDiscover, onEdi
   const [busyId, setBusyId] = useState(null)
   const [tab, setTab] = useState('seeds')
   const [query, setQuery] = useState('')
+  const [previewId, setPreviewId] = useState(null)
   const [reload, setReload] = useState(0)
   const [resetOpen, setResetOpen] = useState(false)
   const [resetting, setResetting] = useState(false)
@@ -48,6 +50,7 @@ export default function Library({ profile, onProfile, onReset, onDiscover, onEdi
 
   function changeTab(id) {
     setTab(id)
+    setPreviewId(null)
     setQuery('')
     setActionError(null)
   }
@@ -104,17 +107,41 @@ export default function Library({ profile, onProfile, onReset, onDiscover, onEdi
 
   return (
     <section className="library-page" aria-labelledby="library-title">
-      <div className="page-heading"><div><span className="eyebrow"><Disc3 size={15} aria-hidden="true" /> TU PROPIO CANCIONERO</span><h1 id="library-title">Aquí vive <em>tu parranda.</em></h1><p>Las de siempre, las que llegaron y las que se quedaron en el corazón.</p></div><div className="library-heading-actions"><button className="button button-secondary" onClick={() => { setResetError(''); setResetOpen(true) }} disabled={resetting || busyId !== null}><RotateCcw size={16} aria-hidden="true" />Empezar de cero</button><button className="button button-secondary" onClick={onDiscover}>Seguir descubriendo<ArrowRight size={17} aria-hidden="true" /></button></div></div>
-      <div className="library-overview"><span><strong>{profile.stats?.total ?? entries.length}</strong> canciones en tu historia</span><span><span className="tiny-sun" /> Cada gusto tiene su propio vallenato.</span></div>
-      <div className="library-tabs" role="tablist" aria-label="Secciones de tu biblioteca">{tabs.map(({ id, label, Icon }, index) => <button role="tab" key={id} id={`tab-${id}`} aria-controls={`panel-${id}`} aria-selected={tab === id} tabIndex={tab === id ? 0 : -1} ref={(element) => { tabRefs.current[index] = element }} onClick={() => changeTab(id)} onKeyDown={(event) => tabKeyDown(event, index)}><Icon size={17} aria-hidden="true" /><span>{label}</span><span className="tab-count">{loading || error ? '—' : count(id)}</span></button>)}</div>
-      <div role="tabpanel" id={`panel-${tab}`} aria-labelledby={`tab-${tab}`} className="library-panel">
-        <div className="library-panel-header"><div><h2>{currentTab.label}</h2><p>{currentTab.description}</p></div>{tab === 'seeds' ? <button className="text-button" onClick={onEditSeeds}>Cambiar mis cinco<ArrowRight size={15} aria-hidden="true" /></button> : <div className="search-field library-search"><Search size={17} aria-hidden="true" /><input type="search" value={query} onChange={(event) => setQuery(event.target.value)} aria-label="Buscar en esta sección de tu biblioteca" placeholder="Buscar en esta lista…" /></div>}</div>
-        {loading ? <div className="library-loading"><Spinner label="Abriendo tu cancionero…" /></div> : error ? <ErrorNotice message={error} onRetry={() => setReload((value) => value + 1)} /> : <div className="library-results" ref={resultsRef} tabIndex={-1}>
-          <span className="sr-only" role="status">{matching.length} canciones en {currentTab.label}</span>
-          {matching.length === 0 ? <div className="library-empty"><currentTab.Icon size={36} strokeWidth={1.2} aria-hidden="true" /><h3>{query ? 'Por aquí no aparece esa canción.' : 'Esta página aún está por escribir.'}</h3><p>{query ? 'Prueba con otro título o artista.' : 'Tus reacciones irán llenando este rincón de tu biblioteca.'}</p>{query ? <button className="text-button" onClick={() => setQuery('')}>Borrar búsqueda<X size={14} aria-hidden="true" /></button> : <button className="button button-primary" onClick={onDiscover}>Encontrar mi siguiente canción<ArrowRight size={16} aria-hidden="true" /></button>}</div>
-            : <div className="library-song-list">{matching.map((entry) => <article className="library-song" key={entry.song.id} aria-label={`${entry.song.title}, ${entry.song.artist}`}><div className="library-song-main"><SongArt song={entry.song} /><div className="song-text"><strong>{entry.song.title}</strong><span>{entry.song.artist}</span><span className="library-song-meta">{[entry.song.album, entry.song.year].filter(Boolean).join(' · ')}</span></div>{entry.is_seed && <span className="seed-badge"><Sprout size={12} aria-hidden="true" />De mis cinco</span>}<MusicLinks song={entry.song} compact /></div><div className="library-song-reactions"><ReactionButtons compact value={entry.reaction} busy={busyId !== null} onReact={(reaction) => react(entry, reaction)} />{busyId === entry.song.id && <Spinner label="Guardando…" small />}</div>{actionError?.id === entry.song.id && <ErrorNotice compact title="No pudimos cambiar esta reacción" message={actionError.message} />}</article>)}</div>}
-        </div>}
+      <div className="page-heading library-heading">
+        <div><span className="eyebrow"><Disc3 size={15} aria-hidden="true" /> TU COLECCIÓN, TU SABOR</span><h1 id="library-title">Aquí se queda<br /><em>lo que te mueve.</em></h1><p>Las de siempre, los nuevos flechazos y las que se cantan con el alma.</p><button className="button button-primary" onClick={onDiscover}>Seguir descubriendo<ArrowRight size={17} aria-hidden="true" /></button></div>
+        <div className="library-hero-art" data-parallax="vinyl" aria-hidden="true"><Disc3 strokeWidth={1} /><span>PURO<br />SENTIMIENTO</span><Heart size={35} fill="currentColor" /></div>
       </div>
+      <div className="library-overview" aria-label="Resumen de tu colección" data-reveal>
+        <div><span className="overview-icon"><Disc3 size={22} aria-hidden="true" /></span><strong>{profile.stats?.total ?? entries.length}</strong><span>Canciones en tu historia</span></div>
+        <div><span className="overview-icon"><Beer size={22} aria-hidden="true" /></span><strong>{profile.stats?.liked ?? 0}</strong><span>Te dan sed</span></div>
+        <div><span className="overview-icon"><Heart size={22} aria-hidden="true" /></span><strong>{profile.stats?.loved ?? 0}</strong><span>Directo al corazón</span></div>
+      </div>
+      <div className="library-tabs" role="tablist" aria-label="Secciones de tu biblioteca">
+        {tabs.map(({ id, label, Icon }, index) => <button role="tab" key={id} id={`tab-${id}`} aria-controls={`panel-${id}`} aria-selected={tab === id} tabIndex={tab === id ? 0 : -1} ref={(element) => { tabRefs.current[index] = element }} onClick={() => changeTab(id)} onKeyDown={(event) => tabKeyDown(event, index)}><Icon size={18} aria-hidden="true" /><span>{label}</span><span className="tab-count">{loading || error ? '—' : count(id)}</span></button>)}
+      </div>
+      <div role="tabpanel" id={`panel-${tab}`} aria-labelledby={`tab-${tab}`} className="library-panel">
+        <div className="library-panel-header">
+          <div><h2>{currentTab.label}<span className="heading-dot">.</span></h2><p>{currentTab.description}</p></div>
+          <div className="library-tools">{tab === 'seeds' && <button className="text-button" onClick={onEditSeeds}>Cambiar mis cinco<ArrowRight size={15} aria-hidden="true" /></button>}<div className="search-field library-search"><Search size={18} aria-hidden="true" /><input type="search" value={query} onChange={(event) => setQuery(event.target.value)} aria-label="Buscar en esta sección de tu biblioteca" placeholder="Busca en tu colección…" />{query && <button className="icon-button" onClick={() => setQuery('')} aria-label="Borrar búsqueda"><X size={15} /></button>}</div></div>
+        </div>
+        {loading ? <div className="library-loading"><Spinner label="Abriendo tu cancionero…" /></div>
+          : error ? <ErrorNotice message={error} onRetry={() => setReload((value) => value + 1)} />
+            : <div className="library-results" ref={resultsRef} tabIndex={-1}>
+              <span className="sr-only" role="status">{matching.length} canciones en {currentTab.label}</span>
+              {matching.length === 0 ? <div className="library-empty"><currentTab.Icon size={42} strokeWidth={1.5} aria-hidden="true" /><h3>{query ? 'Esa canción se nos esconde.' : 'Tu próximo flechazo va aquí.'}</h3><p>{query ? 'Prueba con otro título o artista.' : 'Sal a descubrir. Las canciones que elijas irán llenando este rincón.'}</p>{query ? <button className="text-button" onClick={() => setQuery('')}>Borrar búsqueda<X size={14} aria-hidden="true" /></button> : <button className="button button-primary" onClick={onDiscover}>Encontrar mi siguiente canción<ArrowRight size={16} aria-hidden="true" /></button>}</div>
+                : <div className="library-song-list">{matching.map((entry) => <article className="library-song" key={entry.song.id} aria-label={`${entry.song.title}, ${entry.song.artist}`} data-reveal="card">
+                  <div className="library-song-cover"><SongArt song={entry.song} large />{entry.is_seed && <span className="seed-badge"><Sprout size={13} aria-hidden="true" />De mis cinco</span>}<span className="library-year">{entry.song.year}</span></div>
+                  <div className="library-song-body"><div className="song-text"><h3>{entry.song.title}</h3><span>{entry.song.artist}</span><span className="library-song-meta">{entry.song.album}</span></div>
+                    <div className="library-song-links"><button className={`text-button preview-toggle ${previewId === entry.song.id ? 'is-active' : ''}`} onClick={() => setPreviewId((current) => current === entry.song.id ? null : entry.song.id)} aria-expanded={previewId === entry.song.id} aria-controls={`library-preview-${entry.song.id}`}><Headphones size={16} aria-hidden="true" />{previewId === entry.song.id ? 'Cerrar preview' : 'Dale oído'}</button><MusicLinks song={entry.song} compact /></div>
+                    <div id={`library-preview-${entry.song.id}`} hidden={previewId !== entry.song.id}>{previewId === entry.song.id && <SongPreview song={entry.song} />}</div>
+                    <div className="library-song-reactions"><ReactionButtons compact value={entry.reaction} busy={busyId !== null || resetting} onReact={(reaction) => react(entry, reaction)} />{busyId === entry.song.id && <Spinner label="Guardando…" small />}</div>
+                    {actionError?.id === entry.song.id && <ErrorNotice compact title="No pudimos cambiar esta reacción" message={actionError.message} />}
+                  </div>
+                </article>)}</div>}
+            </div>}
+      </div>
+      <div className="library-bottom-bar"><span>Tu gusto puede cambiar. Tu biblioteca también.</span><button className="text-button reset-profile-button" onClick={() => { setResetError(''); setResetOpen(true) }} disabled={resetting || busyId !== null}><RotateCcw size={15} aria-hidden="true" />Empezar de cero</button></div>
+      <CoastalTicker />
       {resetOpen && <ResetProfileDialog busy={resetting} error={resetError} onCancel={() => setResetOpen(false)} onConfirm={resetProfile} />}
     </section>
   )

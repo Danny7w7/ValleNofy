@@ -117,10 +117,11 @@ def profile(request):
 
 @api("POST")
 def reset_profile(request):
-    user = current_profile(request)
+    previous_profile = current_profile(request)
     with transaction.atomic():
-        user.reactions.all().delete()
-        user.seeds.clear()
+        previous_profile.delete()
+        user = Profile.objects.create()
+        request.session["profile_id"] = str(user.id)
     return response(profile_data(user))
 
 

@@ -1,11 +1,18 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#101310" />
-    <meta name="description" content="Tu próxima canción vallenata empieza con las que ya llevas en el corazón. Descubre clásicos, guarda tus favoritas y arma tu propia parranda." />
+    <meta name="theme-color" content="#10272b" />
+    <meta name="description" content="Tu próximo flechazo suena a vallenato. Elige tus cinco favoritas, escucha, desliza y arma tu propia parranda con ValleNofy." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script>
+      try {
+        const theme = localStorage.getItem('vallenofy-theme') === 'light' ? 'light' : 'dark'
+        document.documentElement.dataset.theme = theme
+        document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#10272b' : '#fff9ec'
+      } catch { /* Dark mode is the default when browser storage is unavailable. */ }
+    </script>
     <title>ValleNofy · Que siga la parranda</title>
   </head>
   <body>

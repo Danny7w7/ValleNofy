@@ -1,18 +1,22 @@
 import { useEffect, useRef } from 'react'
-import { AlertCircle, ArrowRight, Beer, Check, ExternalLink, Flame, Heart, LoaderCircle, Music2, RotateCcw, X } from 'lucide-react'
+import { AlertCircle, ArrowRight, Beer, Check, ExternalLink, Heart, LoaderCircle, MoveHorizontal, Music2, RotateCcw, Sparkles, X } from 'lucide-react'
 
 function Youtube({ size = 20, ...props }) {
   return <svg viewBox="0 0 24 24" width={size} height={size} fill="none" {...props}><rect x="2" y="5" width="20" height="14" rx="4" stroke="currentColor" strokeWidth="1.8" /><path d="m10 9 6 3-6 3Z" fill="currentColor" /></svg>
 }
 
 export const REACTIONS = [
-  { value: 'like', label: 'Esa canción me da sed', short: 'Me da sed', Icon: Beer, className: 'like' },
-  { value: 'love', label: '¡Sírvelooo!', short: '¡Sírvelooo!', Icon: Heart, className: 'love' },
   { value: 'dislike', label: 'Paso, compae', short: 'Paso, compae', Icon: X, className: 'dislike' },
+  { value: 'love', label: '¡Sírvelooo!', short: '¡Sírvelooo!', Icon: Heart, className: 'love' },
+  { value: 'like', label: 'Esa canción me da sed', short: 'Me da sed', Icon: Beer, className: 'like' },
 ]
 
 export function Spinner({ label = 'Cargando la parranda…', small = false }) {
   return <span className={`loading ${small ? 'loading-small' : ''}`} role="status"><LoaderCircle className="spin" size={small ? 18 : 25} aria-hidden="true" /><span>{label}</span></span>
+}
+
+export function CoastalTicker() {
+  return <div className="coastal-ticker" aria-hidden="true"><div className="ticker-track" data-marquee>{[0, 1, 2].map((index) => <span key={index}>QUE SUENE EL ACORDEÓN <b>✳</b> QUE SIGA LA PARRANDA <b>✳</b> HECHO PA’ CANTAR <b>✳</b></span>)}</div></div>
 }
 
 export function ErrorNotice({ message, onRetry, title = 'Se nos fue un momentico la señal', compact = false }) {
@@ -45,13 +49,13 @@ export function MusicLinks({ song, compact = false, preview = false }) {
   )
 }
 
-export function ReactionButtons({ value, onReact, busy = false, compact = false }) {
+export function ReactionButtons({ value, onReact, busy = false, compact = false, swipe = false }) {
   return (
-    <div className={`reaction-buttons ${compact ? 'reaction-buttons-compact' : ''}`} role="group" aria-label="Tu reacción a esta canción" aria-busy={busy}>
-      {REACTIONS.map(({ value: reaction, label, Icon, className }) => (
-        <button key={reaction} className={`reaction-button reaction-${className} ${value === reaction ? 'is-active' : ''}`} disabled={busy} aria-pressed={value === reaction} onClick={() => onReact(reaction)} title={label}>
-          <Icon size={compact ? 17 : 23} aria-hidden="true" fill={reaction === 'love' && value === reaction ? 'currentColor' : 'none'} />
-          <span>{label}</span>{value === reaction && <Check className="reaction-check" size={13} aria-hidden="true" />}
+    <div className={`reaction-buttons ${compact ? 'reaction-buttons-compact' : ''} ${swipe ? 'reaction-buttons-swipe' : ''}`} role="group" aria-label="Tu reacción a esta canción" aria-busy={busy}>
+      {REACTIONS.map(({ value: reaction, label, short, Icon, className }) => (
+        <button key={reaction} className={`reaction-button reaction-${className} ${value === reaction ? 'is-active' : ''}`} disabled={busy} aria-pressed={value === undefined ? undefined : value === reaction} onClick={() => onReact(reaction)} title={label} aria-label={label}>
+          <span className="reaction-icon"><Icon size={swipe ? 28 : 17} aria-hidden="true" fill={reaction === 'love' && value === reaction ? 'currentColor' : 'none'} /></span>
+          <span>{compact || swipe ? short : label}</span>{value === reaction && <Check className="reaction-check" size={13} aria-hidden="true" />}
         </button>
       ))}
     </div>
@@ -72,11 +76,12 @@ export function AboutModal({ onClose }) {
       <div className="about-content">
         <button className="icon-button modal-close" onClick={onClose} aria-label="Cerrar información"><X size={21} /></button>
         <span className="eyebrow"><Music2 size={15} aria-hidden="true" /> HECHO CON SABOR A VALLE</span>
-        <h2 id="about-title">Detrás de<br /><em>la parranda.</em></h2>
-        <p>ValleNofy te ayuda a descubrir vallenato a partir de cinco canciones que ya te gustan. Cada reacción afina el recorrido.</p>
-        <div className="about-detail"><Flame size={20} aria-hidden="true" /><div><h3>La afinidad está en los detalles</h3><p>El recomendador usa artista, época y etiquetas con TF-IDF y similitud coseno de scikit-learn. Tus canciones de Apple también sirven como preferencias, sin ampliar el catálogo de candidatas. La afinidad compara esos datos; no es una probabilidad de que una canción te guste.</p></div></div>
+        <h2 id="about-title">Tu gusto.<br /><em>Tu parranda.</em></h2>
+        <p>Cinco canciones para conocerte. Un montón de flechazos por descubrir. Así suena ValleNofy:</p>
+        <div className="about-detail"><Sparkles size={22} aria-hidden="true" /><div><h3>01. Empieza con tus cinco</h3><p>Elige cinco canciones que te gusten. Buscamos otras que compartan artista, época o estilo. Con cada reacción, la selección se vuelve más tuya.</p></div></div>
+        <div className="about-detail"><MoveHorizontal size={22} aria-hidden="true" /><div><h3>02. Escucha y desliza</h3><p>Mueve la tarjeta a la izquierda para «Paso, compae» o a la derecha para «Me da sed». Si te encanta, pulsa «¡Sírvelooo!»: cuenta más para tus próximas recomendaciones. También puedes usar los botones o enfocar la tarjeta y usar las flechas izquierda, derecha y arriba.</p></div></div>
         <div className="about-detail"><Music2 size={20} aria-hidden="true" /><div><h3>Un paseo por los clásicos</h3><p>El catálogo recomendado reúne canciones hasta 2013. Puedes buscar vallenatos de Apple Music de esa época y previsualizarlos aquí; YouTube y Spotify abren búsquedas externas.</p></div></div>
-        <div className="about-detail"><Heart size={20} aria-hidden="true" /><div><h3>Tu gusto se queda contigo</h3><p>No necesitas una cuenta. Una cookie identifica tu perfil en este navegador y tus preferencias se guardan en el servidor. Si borras las cookies, pierdes el acceso a ese perfil desde este navegador.</p></div></div>
+        <div className="about-detail"><Heart size={20} aria-hidden="true" /><div><h3>03. Guarda tu propia parranda</h3><p>Tus reacciones quedan en Mi biblioteca y puedes cambiarlas cuando quieras. No necesitas una cuenta: una cookie reconoce tu perfil en este navegador. Si borras las cookies, pierdes el acceso a ese perfil desde aquí.</p></div></div>
         <button className="button button-primary" onClick={onClose}>Que siga la música<ArrowRight size={17} aria-hidden="true" /></button>
       </div>
     </dialog>
