@@ -115,6 +115,15 @@ def profile(request):
     return response(profile_data(current_profile(request)))
 
 
+@api("POST")
+def reset_profile(request):
+    user = current_profile(request)
+    with transaction.atomic():
+        user.reactions.all().delete()
+        user.seeds.clear()
+    return response(profile_data(user))
+
+
 def matching_catalog_songs(raw_query, artist):
     query = normalized(raw_query)
     all_songs = list(Song.objects.filter(is_recommendable=True))

@@ -82,3 +82,39 @@ export function AboutModal({ onClose }) {
     </dialog>
   )
 }
+
+export function ResetProfileDialog({ busy, error, onCancel, onConfirm }) {
+  const ref = useRef(null)
+  useEffect(() => {
+    const dialog = ref.current
+    dialog.showModal()
+    const previous = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = previous
+      if (dialog.open) dialog.close()
+    }
+  }, [])
+
+  function cancel() {
+    if (!busy) onCancel()
+  }
+
+  return (
+    <dialog ref={ref} className="reset-dialog" aria-labelledby="reset-profile-title" aria-describedby="reset-profile-description" onCancel={(event) => { event.preventDefault(); cancel() }} onClick={(event) => { if (event.target === event.currentTarget) cancel() }}>
+      <div className="reset-dialog-content">
+        <button className="icon-button modal-close" onClick={cancel} disabled={busy} aria-label="Cerrar confirmación"><X size={21} /></button>
+        <span className="eyebrow"><RotateCcw size={15} aria-hidden="true" /> VOLVER A EMPEZAR</span>
+        <h2 id="reset-profile-title">¿Empezamos de cero?</h2>
+        <p id="reset-profile-description">Se borrarán tus cinco favoritas y todas las reacciones guardadas en este navegador. No se puede deshacer. El catálogo y los demás perfiles seguirán intactos.</p>
+        {error && <ErrorNotice compact title="No pudimos reiniciar tu perfil" message={error} />}
+        <div className="reset-dialog-actions">
+          <button className="button button-secondary" onClick={cancel} disabled={busy} autoFocus>Cancelar</button>
+          <button className="button button-danger" onClick={onConfirm} disabled={busy}>
+            {busy ? <Spinner label="Borrando…" small /> : <><RotateCcw size={16} aria-hidden="true" />Borrar y empezar de cero</>}
+          </button>
+        </div>
+      </div>
+    </dialog>
+  )
+}

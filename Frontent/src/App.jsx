@@ -72,6 +72,12 @@ function ValleNofy() {
     notify('Tus cinco ya pusieron el primer acorde. ¡Que suene!')
   }
 
+  function profileReset(next) {
+    setProfile(next)
+    navigate('discover')
+    notify('Listo, compae. Empezamos de cero: elige tus cinco favoritas.')
+  }
+
   return (
     <div className="app-shell">
       <a className="skip-link" href="#main-content">Saltar al contenido</a>
@@ -85,7 +91,7 @@ function ValleNofy() {
         {loading ? <div className="boot-state"><BrandMark className="boot-mark" /><span className="eyebrow">UN MOMENTICO, COMPAE</span><h1>La música ya viene.</h1><Spinner label="Preparando tu rincón vallenato…" /></div>
           : error ? <div className="boot-error"><BrandMark className="boot-mark" /><h1>El acordeón hace una pausa.</h1><ErrorNotice message={error} onRetry={() => setRetry((value) => value + 1)} /></div>
             : profile && <>{!profile.onboarded && profile.seed_ids?.length > 0 && <div className="reset-banner" role="status"><Info size={18} aria-hidden="true" /><p>Tu gusto cambió de rumbo. Elige cinco canciones que te gusten para volver a empezar. Tu historial sigue guardado.</p></div>}
-              {screen === 'onboarding' ? <Onboarding profile={profile} onComplete={onboarded} onCancel={() => navigate('discover')} /> : screen === 'library' ? <Library profile={profile} onProfile={updateProfile} onDiscover={() => navigate('discover')} onEditSeeds={() => navigate('onboarding')} notify={notify} /> : <Discover profile={profile} onProfile={updateProfile} onLibrary={() => navigate('library')} onEditSeeds={() => navigate('onboarding')} notify={notify} />}
+              {screen === 'onboarding' ? <Onboarding profile={profile} onComplete={onboarded} onCancel={() => navigate('discover')} /> : screen === 'library' ? <Library profile={profile} onProfile={updateProfile} onReset={profileReset} onDiscover={() => navigate('discover')} onEditSeeds={() => navigate('onboarding')} notify={notify} /> : <Discover profile={profile} onProfile={updateProfile} onLibrary={() => navigate('library')} onEditSeeds={() => navigate('onboarding')} notify={notify} />}
             </>}
       </main>
 

@@ -62,6 +62,7 @@ async function request(path, { method = 'GET', body, signal } = {}) {
 
 export const api = {
   profile: (signal) => request('profile/', { signal }),
+  resetProfile: () => request('profile/reset/', { method: 'POST', body: {} }),
   songs: (query, artist, signal) => request('songs/search/?' + new URLSearchParams({ q: query, artist }), { signal }),
   preview: (songId, signal) => request(`songs/${encodeURIComponent(songId)}/preview/`, { signal }),
   onboard: (songs) => request('onboarding/', { method: 'POST', body: { songs } }),

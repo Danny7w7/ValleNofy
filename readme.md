@@ -119,6 +119,7 @@ Las canciones de Apple se vuelven a confirmar por su identificador al guardar la
 | --- | --- |
 | `GET /api/health/` | Estado e identificador de instalación del servidor |
 | `GET /api/profile/` | Perfil, cinco canciones iniciales, estadísticas y cookie CSRF |
+| `POST /api/profile/reset/` | Borrar las cinco favoritas y reacciones del perfil de la sesión actual; devuelve el perfil vacío |
 | `GET /api/songs/?q=...&artist=...` | Búsqueda local del catálogo curado |
 | `GET /api/songs/search/?q=...&artist=...` | Coincidencias locales y resultados de Apple Music Colombia; devuelve género, preview y aviso si Apple no responde |
 | `GET /api/songs/7/preview/` | URL del reproductor Apple Music para esa canción, o estado sin preview disponible |
@@ -273,3 +274,11 @@ Quiero que el buscar del comienzo pueda buscar cualquier cancion (Que sea vallen
 ```
 
 **Decisiones acordadas:** conservar el límite de 2013 inclusive; mostrar el género que devuelve Apple y dejar que el usuario confirme que sea vallenato; guardar las canciones escogidas como preferencias en SQLite y usarlas para orientar el recomendador, manteniendo el catálogo curado como conjunto de candidatas.
+
+### 8. Reinicio del perfil — 20 de octubre de 2026
+
+```text
+Agregame un boton para poder comenzar de 0
+```
+
+**Aplicación del cambio:** añadir en Mi biblioteca un botón con confirmación que borra las cinco favoritas y todas las reacciones del perfil del navegador actual, y devuelve al usuario a la selección inicial. El catálogo y los demás perfiles se conservan.
