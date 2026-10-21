@@ -1,0 +1,894 @@
+{
+  "sources": [
+    {
+      "url": "https://music.apple.com/us/album/enamorado-como-siempre/1711866861",
+      "label": "Apple Music — Binomio de Oro, etapa de Rafael Orozco — Enamorado Como Siempre (1978), ℗ Codiscos."
+    },
+    {
+      "url": "https://music.apple.com/us/album/brindo-con-el-alma/316925931",
+      "label": "Apple Music — Diomedes Díaz y Gonzalo «El Cocha» Molina — Brindo Con el Alma (1986), ℗ Sony Music."
+    },
+    {
+      "url": "https://music.apple.com/us/album/canciones-lindas-vol-5/1527625793",
+      "label": "Apple Music — Los Betos — Canciones Lindas, Vol. 5 (1987), ℗ Los Betos; distribución ONErpm."
+    },
+    {
+      "url": "https://music.apple.com/us/album/de-am%C3%A9rica/1711865692",
+      "label": "Apple Music — Binomio de Oro, etapa de Rafael Orozco — De América (1991), ℗ Codiscos."
+    },
+    {
+      "url": "https://music.apple.com/us/album/titulo-de-amor/321505502",
+      "label": "Apple Music — Diomedes Díaz y Juancho Rois — Titulo de Amor (1993), ℗ Sony Music."
+    },
+    {
+      "url": "https://music.apple.com/us/album/el-de-todos-los-tiempos/1612845967",
+      "label": "Apple Music — Jorge Oñate — El de Todos Los Tiempos (álbum y ℗ 1997 Sony Music; las fichas de pistas digitales muestran 2022)."
+    },
+    {
+      "url": "https://music.apple.com/us/album/el-gallo-fino/974886811",
+      "label": "Apple Music — Iván Villazón y Saul Lallemand — El Gallo Fino (2003), ℗ Valdupari Records."
+    },
+    {
+      "url": "https://music.apple.com/us/album/cien-dias-de-bohemia/475743112",
+      "label": "Apple Music — Los Hermanos Zuleta (Poncho Zuleta y Emiliano Zuleta) — Cien Dias de Bohemia (2005), ℗ Adriano Buitrago."
+    },
+    {
+      "url": "https://music.apple.com/us/album/son-para-el-mundo/270219833",
+      "label": "Apple Music — Jorge Celedón y Jimmy Zambrano — Son para el Mundo (2006), ℗ SBME Colombia."
+    },
+    {
+      "url": "https://music.apple.com/us/album/el-pap%C3%A1-de-los-amores/1713203777",
+      "label": "Apple Music — Peter Manjarrés y Sergio Luis Rodriguez — El Papá de los Amores (2007), ℗ Codiscos."
+    },
+    {
+      "url": "https://music.apple.com/us/album/el-original/518349464",
+      "label": "Apple Music — Silvestre Dangond y Juancho de la Espriella — El Original (2008), ℗ Sony Music."
+    },
+    {
+      "url": "https://music.apple.com/us/album/la-9a-batalla/650738381",
+      "label": "Apple Music — Silvestre Dangond y Rolando Ochoa — La 9a Batalla (2013), edición original de 14 pistas, ℗ Sony Music; excluye ampliaciones posteriores."
+    }
+  ],
+  "songs": [
+    {
+      "key": "binomio-de-oro-mundo-de-ilusiones-1978",
+      "title": "Mundo de Ilusiones",
+      "artist": "Rafael Orozco & Binomio de Oro",
+      "album": "Enamorado Como Siempre",
+      "year": 1978,
+      "tags": [
+        "romantico",
+        "nostalgia",
+        "tradicional"
+      ],
+      "art_color": "#A45C40",
+      "source_url": "https://music.apple.com/us/album/enamorado-como-siempre/1711866861"
+    },
+    {
+      "key": "binomio-de-oro-enamorado-como-siempre-1978",
+      "title": "Enamorado Como Siempre",
+      "artist": "Rafael Orozco & Binomio de Oro",
+      "album": "Enamorado Como Siempre",
+      "year": 1978,
+      "tags": [
+        "romantico",
+        "alegre",
+        "tradicional"
+      ],
+      "art_color": "#A45C40",
+      "source_url": "https://music.apple.com/us/album/enamorado-como-siempre/1711866861"
+    },
+    {
+      "key": "binomio-de-oro-nuestros-amores-1978",
+      "title": "Nuestros Amores",
+      "artist": "Rafael Orozco & Binomio de Oro",
+      "album": "Enamorado Como Siempre",
+      "year": 1978,
+      "tags": [
+        "romantico",
+        "nostalgia",
+        "tradicional"
+      ],
+      "art_color": "#A45C40",
+      "source_url": "https://music.apple.com/us/album/enamorado-como-siempre/1711866861"
+    },
+    {
+      "key": "binomio-de-oro-la-parranda-es-pa-amanece-1978",
+      "title": "La Parranda Es Pa' Amanecé",
+      "artist": "Rafael Orozco & Binomio de Oro",
+      "album": "Enamorado Como Siempre",
+      "year": 1978,
+      "tags": [
+        "parranda",
+        "alegre",
+        "tradicional"
+      ],
+      "art_color": "#A45C40",
+      "source_url": "https://music.apple.com/us/album/enamorado-como-siempre/1711866861"
+    },
+    {
+      "key": "binomio-de-oro-dejame-quererte-1978",
+      "title": "Déjame Quererte",
+      "artist": "Rafael Orozco & Binomio de Oro",
+      "album": "Enamorado Como Siempre",
+      "year": 1978,
+      "tags": [
+        "romantico",
+        "nostalgia",
+        "tradicional"
+      ],
+      "art_color": "#A45C40",
+      "source_url": "https://music.apple.com/us/album/enamorado-como-siempre/1711866861"
+    },
+    {
+      "key": "diomedes-diaz-sin-medir-distancias-1986",
+      "title": "Sin Medir Distancias",
+      "artist": "Diomedes Díaz & Cocha Molina",
+      "album": "Brindo Con el Alma",
+      "year": 1986,
+      "tags": [
+        "romantico",
+        "despecho",
+        "nostalgia"
+      ],
+      "art_color": "#A36B3D",
+      "source_url": "https://music.apple.com/us/album/brindo-con-el-alma/316925931"
+    },
+    {
+      "key": "diomedes-diaz-los-sabanales-1986",
+      "title": "Los Sabanales",
+      "artist": "Diomedes Díaz & Cocha Molina",
+      "album": "Brindo Con el Alma",
+      "year": 1986,
+      "tags": [
+        "parranda",
+        "alegre",
+        "tradicional"
+      ],
+      "art_color": "#A36B3D",
+      "source_url": "https://music.apple.com/us/album/brindo-con-el-alma/316925931"
+    },
+    {
+      "key": "diomedes-diaz-ayudame-a-quererte-1986",
+      "title": "Ayúdame a Quererte",
+      "artist": "Diomedes Díaz & Cocha Molina",
+      "album": "Brindo Con el Alma",
+      "year": 1986,
+      "tags": [
+        "romantico",
+        "nostalgia",
+        "tradicional"
+      ],
+      "art_color": "#A36B3D",
+      "source_url": "https://music.apple.com/us/album/brindo-con-el-alma/316925931"
+    },
+    {
+      "key": "diomedes-diaz-brindo-con-el-alma-1986",
+      "title": "Brindo Con el Alma",
+      "artist": "Diomedes Díaz & Cocha Molina",
+      "album": "Brindo Con el Alma",
+      "year": 1986,
+      "tags": [
+        "parranda",
+        "bohemia",
+        "tradicional"
+      ],
+      "art_color": "#A36B3D",
+      "source_url": "https://music.apple.com/us/album/brindo-con-el-alma/316925931"
+    },
+    {
+      "key": "diomedes-diaz-sin-ti-1986",
+      "title": "Sin Ti",
+      "artist": "Diomedes Díaz & Cocha Molina",
+      "album": "Brindo Con el Alma",
+      "year": 1986,
+      "tags": [
+        "romantico",
+        "despecho",
+        "nostalgia"
+      ],
+      "art_color": "#A36B3D",
+      "source_url": "https://music.apple.com/us/album/brindo-con-el-alma/316925931"
+    },
+    {
+      "key": "los-betos-canciones-lindas-1987",
+      "title": "Canciones Lindas",
+      "artist": "Los Betos",
+      "album": "Canciones Lindas, Vol. 5",
+      "year": 1987,
+      "tags": [
+        "romantico",
+        "nostalgia",
+        "tradicional"
+      ],
+      "art_color": "#B6634B",
+      "source_url": "https://music.apple.com/us/album/canciones-lindas-vol-5/1527625793"
+    },
+    {
+      "key": "los-betos-canarios-de-mi-alma-1987",
+      "title": "Canarios de Mi Alma",
+      "artist": "Los Betos",
+      "album": "Canciones Lindas, Vol. 5",
+      "year": 1987,
+      "tags": [
+        "romantico",
+        "nostalgia",
+        "tradicional"
+      ],
+      "art_color": "#B6634B",
+      "source_url": "https://music.apple.com/us/album/canciones-lindas-vol-5/1527625793"
+    },
+    {
+      "key": "los-betos-la-poesia-de-mi-cuna-1987",
+      "title": "La Poesía de Mi Cuna",
+      "artist": "Los Betos",
+      "album": "Canciones Lindas, Vol. 5",
+      "year": 1987,
+      "tags": [
+        "tradicional",
+        "nostalgia",
+        "tierra"
+      ],
+      "art_color": "#B6634B",
+      "source_url": "https://music.apple.com/us/album/canciones-lindas-vol-5/1527625793"
+    },
+    {
+      "key": "los-betos-por-siempre-sola-1987",
+      "title": "Por Siempre Sola",
+      "artist": "Los Betos",
+      "album": "Canciones Lindas, Vol. 5",
+      "year": 1987,
+      "tags": [
+        "romantico",
+        "despecho",
+        "nostalgia"
+      ],
+      "art_color": "#B6634B",
+      "source_url": "https://music.apple.com/us/album/canciones-lindas-vol-5/1527625793"
+    },
+    {
+      "key": "los-betos-mi-primera-novia-1987",
+      "title": "Mi Primera Novia",
+      "artist": "Los Betos",
+      "album": "Canciones Lindas, Vol. 5",
+      "year": 1987,
+      "tags": [
+        "romantico",
+        "nostalgia",
+        "recuerdos"
+      ],
+      "art_color": "#B6634B",
+      "source_url": "https://music.apple.com/us/album/canciones-lindas-vol-5/1527625793"
+    },
+    {
+      "key": "binomio-de-oro-ponte-chevere-1991",
+      "title": "Ponte Chévere",
+      "artist": "Rafael Orozco & Binomio de Oro",
+      "album": "De América",
+      "year": 1991,
+      "tags": [
+        "parranda",
+        "alegre",
+        "tradicional"
+      ],
+      "art_color": "#BA8848",
+      "source_url": "https://music.apple.com/us/album/de-am%C3%A9rica/1711865692"
+    },
+    {
+      "key": "binomio-de-oro-nina-bonita-1991",
+      "title": "Niña Bonita",
+      "artist": "Rafael Orozco & Binomio de Oro",
+      "album": "De América",
+      "year": 1991,
+      "tags": [
+        "romantico",
+        "alegre",
+        "coqueteo"
+      ],
+      "art_color": "#BA8848",
+      "source_url": "https://music.apple.com/us/album/de-am%C3%A9rica/1711865692"
+    },
+    {
+      "key": "binomio-de-oro-solo-para-ti-1991",
+      "title": "Sólo para Ti",
+      "artist": "Rafael Orozco & Binomio de Oro",
+      "album": "De América",
+      "year": 1991,
+      "tags": [
+        "romantico",
+        "nostalgia",
+        "tradicional"
+      ],
+      "art_color": "#BA8848",
+      "source_url": "https://music.apple.com/us/album/de-am%C3%A9rica/1711865692"
+    },
+    {
+      "key": "binomio-de-oro-el-llanto-de-un-rey-1991",
+      "title": "El Llanto de un Rey",
+      "artist": "Rafael Orozco & Binomio de Oro",
+      "album": "De América",
+      "year": 1991,
+      "tags": [
+        "despecho",
+        "nostalgia",
+        "tradicional"
+      ],
+      "art_color": "#BA8848",
+      "source_url": "https://music.apple.com/us/album/de-am%C3%A9rica/1711865692"
+    },
+    {
+      "key": "binomio-de-oro-despues-del-amor-1991",
+      "title": "Después del Amor",
+      "artist": "Rafael Orozco & Binomio de Oro",
+      "album": "De América",
+      "year": 1991,
+      "tags": [
+        "romantico",
+        "despecho",
+        "nostalgia"
+      ],
+      "art_color": "#BA8848",
+      "source_url": "https://music.apple.com/us/album/de-am%C3%A9rica/1711865692"
+    },
+    {
+      "key": "diomedes-diaz-mi-primera-cana-1993",
+      "title": "Mi Primera Cana",
+      "artist": "Diomedes Díaz & Juancho Rois",
+      "album": "Titulo de Amor",
+      "year": 1993,
+      "tags": [
+        "nostalgia",
+        "tradicional",
+        "recuerdos"
+      ],
+      "art_color": "#C68A40",
+      "source_url": "https://music.apple.com/us/album/titulo-de-amor/321505502"
+    },
+    {
+      "key": "diomedes-diaz-dejala-1993",
+      "title": "Déjala",
+      "artist": "Diomedes Díaz & Juancho Rois",
+      "album": "Titulo de Amor",
+      "year": 1993,
+      "tags": [
+        "despecho",
+        "romantico",
+        "tradicional"
+      ],
+      "art_color": "#C68A40",
+      "source_url": "https://music.apple.com/us/album/titulo-de-amor/321505502"
+    },
+    {
+      "key": "diomedes-diaz-mujereando-1993",
+      "title": "Mujereando",
+      "artist": "Diomedes Díaz & Juancho Rois",
+      "album": "Titulo de Amor",
+      "year": 1993,
+      "tags": [
+        "parranda",
+        "alegre",
+        "coqueteo"
+      ],
+      "art_color": "#C68A40",
+      "source_url": "https://music.apple.com/us/album/titulo-de-amor/321505502"
+    },
+    {
+      "key": "diomedes-diaz-titulo-de-amor-1993",
+      "title": "Título de Amor",
+      "artist": "Diomedes Díaz & Juancho Rois",
+      "album": "Titulo de Amor",
+      "year": 1993,
+      "tags": [
+        "romantico",
+        "nostalgia",
+        "tradicional"
+      ],
+      "art_color": "#C68A40",
+      "source_url": "https://music.apple.com/us/album/titulo-de-amor/321505502"
+    },
+    {
+      "key": "diomedes-diaz-tu-eres-la-reina-1993",
+      "title": "Tú Eres la Reina",
+      "artist": "Diomedes Díaz & Juancho Rois",
+      "album": "Titulo de Amor",
+      "year": 1993,
+      "tags": [
+        "romantico",
+        "alegre",
+        "tradicional"
+      ],
+      "art_color": "#C68A40",
+      "source_url": "https://music.apple.com/us/album/titulo-de-amor/321505502"
+    },
+    {
+      "key": "jorge-onate-seras-recuerdo-lejano-1997",
+      "title": "Serás Recuerdo Lejano",
+      "artist": "Jorge Oñate",
+      "album": "El de Todos Los Tiempos",
+      "year": 1997,
+      "tags": [
+        "despecho",
+        "nostalgia",
+        "tradicional"
+      ],
+      "art_color": "#647B5B",
+      "source_url": "https://music.apple.com/us/album/el-de-todos-los-tiempos/1612845967"
+    },
+    {
+      "key": "jorge-onate-eso-no-te-luce-1997",
+      "title": "Eso No Te Luce",
+      "artist": "Jorge Oñate",
+      "album": "El de Todos Los Tiempos",
+      "year": 1997,
+      "tags": [
+        "despecho",
+        "alegre",
+        "tradicional"
+      ],
+      "art_color": "#647B5B",
+      "source_url": "https://music.apple.com/us/album/el-de-todos-los-tiempos/1612845967"
+    },
+    {
+      "key": "jorge-onate-solo-tu-sabes-1997",
+      "title": "Sólo Tú Sabes",
+      "artist": "Jorge Oñate",
+      "album": "El de Todos Los Tiempos",
+      "year": 1997,
+      "tags": [
+        "romantico",
+        "nostalgia",
+        "tradicional"
+      ],
+      "art_color": "#647B5B",
+      "source_url": "https://music.apple.com/us/album/el-de-todos-los-tiempos/1612845967"
+    },
+    {
+      "key": "jorge-onate-a-mi-padre-1997",
+      "title": "A Mi Padre",
+      "artist": "Jorge Oñate",
+      "album": "El de Todos Los Tiempos",
+      "year": 1997,
+      "tags": [
+        "familia",
+        "nostalgia",
+        "tradicional"
+      ],
+      "art_color": "#647B5B",
+      "source_url": "https://music.apple.com/us/album/el-de-todos-los-tiempos/1612845967"
+    },
+    {
+      "key": "jorge-onate-contigo-olvido-las-penas-1997",
+      "title": "Contigo Olvido Las Penas",
+      "artist": "Jorge Oñate",
+      "album": "El de Todos Los Tiempos",
+      "year": 1997,
+      "tags": [
+        "romantico",
+        "alegre",
+        "tradicional"
+      ],
+      "art_color": "#647B5B",
+      "source_url": "https://music.apple.com/us/album/el-de-todos-los-tiempos/1612845967"
+    },
+    {
+      "key": "ivan-villazon-te-tengo-en-la-mira-2003",
+      "title": "Te Tengo en la Mira",
+      "artist": "Iván Villazón & Saul Lallemand",
+      "album": "El Gallo Fino",
+      "year": 2003,
+      "tags": [
+        "romantico",
+        "alegre",
+        "coqueteo"
+      ],
+      "art_color": "#3D8B85",
+      "source_url": "https://music.apple.com/us/album/el-gallo-fino/974886811"
+    },
+    {
+      "key": "ivan-villazon-palito-de-santa-cruz-2003",
+      "title": "Palito de Santa Cruz",
+      "artist": "Iván Villazón & Saul Lallemand",
+      "album": "El Gallo Fino",
+      "year": 2003,
+      "tags": [
+        "parranda",
+        "alegre",
+        "tradicional"
+      ],
+      "art_color": "#3D8B85",
+      "source_url": "https://music.apple.com/us/album/el-gallo-fino/974886811"
+    },
+    {
+      "key": "ivan-villazon-el-ave-perdida-2003",
+      "title": "El Ave Perdida",
+      "artist": "Iván Villazón & Saul Lallemand",
+      "album": "El Gallo Fino",
+      "year": 2003,
+      "tags": [
+        "despecho",
+        "nostalgia",
+        "tradicional"
+      ],
+      "art_color": "#3D8B85",
+      "source_url": "https://music.apple.com/us/album/el-gallo-fino/974886811"
+    },
+    {
+      "key": "ivan-villazon-pa-lante-mujeres-2003",
+      "title": "Pa' Lante Mujeres",
+      "artist": "Iván Villazón & Saul Lallemand",
+      "album": "El Gallo Fino",
+      "year": 2003,
+      "tags": [
+        "alegre",
+        "parranda",
+        "tradicional"
+      ],
+      "art_color": "#3D8B85",
+      "source_url": "https://music.apple.com/us/album/el-gallo-fino/974886811"
+    },
+    {
+      "key": "ivan-villazon-sonar-contigo-2003",
+      "title": "Soñar Contigo",
+      "artist": "Iván Villazón & Saul Lallemand",
+      "album": "El Gallo Fino",
+      "year": 2003,
+      "tags": [
+        "romantico",
+        "nostalgia",
+        "tradicional"
+      ],
+      "art_color": "#3D8B85",
+      "source_url": "https://music.apple.com/us/album/el-gallo-fino/974886811"
+    },
+    {
+      "key": "los-hermanos-zuleta-mi-pueblo-natal-2005",
+      "title": "Mi Pueblo Natal",
+      "artist": "Los Hermanos Zuleta",
+      "album": "Cien Dias de Bohemia",
+      "year": 2005,
+      "tags": [
+        "nostalgia",
+        "tradicional",
+        "tierra"
+      ],
+      "art_color": "#917349",
+      "source_url": "https://music.apple.com/us/album/cien-dias-de-bohemia/475743112"
+    },
+    {
+      "key": "los-hermanos-zuleta-cien-dias-de-bohemia-2005",
+      "title": "Cien Días de Bohemia",
+      "artist": "Los Hermanos Zuleta",
+      "album": "Cien Dias de Bohemia",
+      "year": 2005,
+      "tags": [
+        "parranda",
+        "bohemia",
+        "tradicional"
+      ],
+      "art_color": "#917349",
+      "source_url": "https://music.apple.com/us/album/cien-dias-de-bohemia/475743112"
+    },
+    {
+      "key": "los-hermanos-zuleta-el-panuelo-2005",
+      "title": "El Pañuelo",
+      "artist": "Los Hermanos Zuleta",
+      "album": "Cien Dias de Bohemia",
+      "year": 2005,
+      "tags": [
+        "romantico",
+        "nostalgia",
+        "tradicional"
+      ],
+      "art_color": "#917349",
+      "source_url": "https://music.apple.com/us/album/cien-dias-de-bohemia/475743112"
+    },
+    {
+      "key": "los-hermanos-zuleta-el-semestre-2005",
+      "title": "El Semestre",
+      "artist": "Los Hermanos Zuleta",
+      "album": "Cien Dias de Bohemia",
+      "year": 2005,
+      "tags": [
+        "parranda",
+        "alegre",
+        "tradicional"
+      ],
+      "art_color": "#917349",
+      "source_url": "https://music.apple.com/us/album/cien-dias-de-bohemia/475743112"
+    },
+    {
+      "key": "los-hermanos-zuleta-cumple-con-amarla-2005",
+      "title": "Cumple Con Amarla",
+      "artist": "Los Hermanos Zuleta",
+      "album": "Cien Dias de Bohemia",
+      "year": 2005,
+      "tags": [
+        "romantico",
+        "nostalgia",
+        "tradicional"
+      ],
+      "art_color": "#917349",
+      "source_url": "https://music.apple.com/us/album/cien-dias-de-bohemia/475743112"
+    },
+    {
+      "key": "jorge-celedon-esta-vida-2006",
+      "title": "Esta Vida",
+      "artist": "Jorge Celedón & Jimmy Zambrano",
+      "album": "Son para el Mundo",
+      "year": 2006,
+      "tags": [
+        "alegre",
+        "parranda",
+        "gratitud"
+      ],
+      "art_color": "#56A69A",
+      "source_url": "https://music.apple.com/us/album/son-para-el-mundo/270219833"
+    },
+    {
+      "key": "jorge-celedon-amor-del-alma-2006",
+      "title": "Amor del Alma",
+      "artist": "Jorge Celedón & Jimmy Zambrano",
+      "album": "Son para el Mundo",
+      "year": 2006,
+      "tags": [
+        "romantico",
+        "nostalgia",
+        "tradicional"
+      ],
+      "art_color": "#56A69A",
+      "source_url": "https://music.apple.com/us/album/son-para-el-mundo/270219833"
+    },
+    {
+      "key": "jorge-celedon-el-amor-es-asi-2006",
+      "title": "El Amor Es Así",
+      "artist": "Jorge Celedón & Jimmy Zambrano",
+      "album": "Son para el Mundo",
+      "year": 2006,
+      "tags": [
+        "romantico",
+        "nostalgia",
+        "tradicional"
+      ],
+      "art_color": "#56A69A",
+      "source_url": "https://music.apple.com/us/album/son-para-el-mundo/270219833"
+    },
+    {
+      "key": "jorge-celedon-todo-por-nada-2006",
+      "title": "Todo Por Nada",
+      "artist": "Jorge Celedón & Jimmy Zambrano",
+      "album": "Son para el Mundo",
+      "year": 2006,
+      "tags": [
+        "despecho",
+        "romantico",
+        "nostalgia"
+      ],
+      "art_color": "#56A69A",
+      "source_url": "https://music.apple.com/us/album/son-para-el-mundo/270219833"
+    },
+    {
+      "key": "jorge-celedon-mi-poema-2006",
+      "title": "Mi Poema",
+      "artist": "Jorge Celedón & Jimmy Zambrano",
+      "album": "Son para el Mundo",
+      "year": 2006,
+      "tags": [
+        "romantico",
+        "nostalgia",
+        "tradicional"
+      ],
+      "art_color": "#56A69A",
+      "source_url": "https://music.apple.com/us/album/son-para-el-mundo/270219833"
+    },
+    {
+      "key": "peter-manjarres-el-papa-de-los-amores-2007",
+      "title": "El Papá de los Amores",
+      "artist": "Peter Manjarrés & Sergio Luis Rodriguez",
+      "album": "El Papá de los Amores",
+      "year": 2007,
+      "tags": [
+        "parranda",
+        "alegre",
+        "coqueteo"
+      ],
+      "art_color": "#9A597D",
+      "source_url": "https://music.apple.com/us/album/el-pap%C3%A1-de-los-amores/1713203777"
+    },
+    {
+      "key": "peter-manjarres-estoy-enamorado-2007",
+      "title": "Estoy Enamorado",
+      "artist": "Peter Manjarrés & Sergio Luis Rodriguez",
+      "album": "El Papá de los Amores",
+      "year": 2007,
+      "tags": [
+        "romantico",
+        "alegre",
+        "coqueteo"
+      ],
+      "art_color": "#9A597D",
+      "source_url": "https://music.apple.com/us/album/el-pap%C3%A1-de-los-amores/1713203777"
+    },
+    {
+      "key": "peter-manjarres-el-angel-2007",
+      "title": "El Ángel",
+      "artist": "Peter Manjarrés & Sergio Luis Rodriguez",
+      "album": "El Papá de los Amores",
+      "year": 2007,
+      "tags": [
+        "romantico",
+        "nostalgia",
+        "tradicional"
+      ],
+      "art_color": "#9A597D",
+      "source_url": "https://music.apple.com/us/album/el-pap%C3%A1-de-los-amores/1713203777"
+    },
+    {
+      "key": "peter-manjarres-y-como-hago-2007",
+      "title": "Y Cómo Hago",
+      "artist": "Peter Manjarrés & Sergio Luis Rodriguez",
+      "album": "El Papá de los Amores",
+      "year": 2007,
+      "tags": [
+        "despecho",
+        "romantico",
+        "nostalgia"
+      ],
+      "art_color": "#9A597D",
+      "source_url": "https://music.apple.com/us/album/el-pap%C3%A1-de-los-amores/1713203777"
+    },
+    {
+      "key": "peter-manjarres-nada-sera-igual-2007",
+      "title": "Nada Será Igual",
+      "artist": "Peter Manjarrés & Sergio Luis Rodriguez",
+      "album": "El Papá de los Amores",
+      "year": 2007,
+      "tags": [
+        "despecho",
+        "romantico",
+        "nostalgia"
+      ],
+      "art_color": "#9A597D",
+      "source_url": "https://music.apple.com/us/album/el-pap%C3%A1-de-los-amores/1713203777"
+    },
+    {
+      "key": "silvestre-dangond-come-y-vuelve-2008",
+      "title": "Come y Vuelve",
+      "artist": "Silvestre Dangond & Juancho de la Espriella",
+      "album": "El Original",
+      "year": 2008,
+      "tags": [
+        "parranda",
+        "alegre",
+        "coqueteo"
+      ],
+      "art_color": "#CF7540",
+      "source_url": "https://music.apple.com/us/album/el-original/518349464"
+    },
+    {
+      "key": "silvestre-dangond-el-pasado-es-pasado-2008",
+      "title": "El Pasado, Es Pasado",
+      "artist": "Silvestre Dangond & Juancho de la Espriella",
+      "album": "El Original",
+      "year": 2008,
+      "tags": [
+        "despecho",
+        "nostalgia",
+        "romantico"
+      ],
+      "art_color": "#CF7540",
+      "source_url": "https://music.apple.com/us/album/el-original/518349464"
+    },
+    {
+      "key": "silvestre-dangond-me-gusta-me-gusta-2008",
+      "title": "Me Gusta, Me Gusta",
+      "artist": "Silvestre Dangond & Juancho de la Espriella",
+      "album": "El Original",
+      "year": 2008,
+      "tags": [
+        "romantico",
+        "alegre",
+        "coqueteo"
+      ],
+      "art_color": "#CF7540",
+      "source_url": "https://music.apple.com/us/album/el-original/518349464"
+    },
+    {
+      "key": "silvestre-dangond-la-loma-2008",
+      "title": "La Loma",
+      "artist": "Silvestre Dangond & Juancho de la Espriella",
+      "album": "El Original",
+      "year": 2008,
+      "tags": [
+        "parranda",
+        "alegre",
+        "tradicional"
+      ],
+      "art_color": "#CF7540",
+      "source_url": "https://music.apple.com/us/album/el-original/518349464"
+    },
+    {
+      "key": "silvestre-dangond-a-un-amor-prohibido-2008",
+      "title": "A un Amor Prohibido",
+      "artist": "Silvestre Dangond & Juancho de la Espriella",
+      "album": "El Original",
+      "year": 2008,
+      "tags": [
+        "romantico",
+        "despecho",
+        "nostalgia"
+      ],
+      "art_color": "#CF7540",
+      "source_url": "https://music.apple.com/us/album/el-original/518349464"
+    },
+    {
+      "key": "silvestre-dangond-la-difunta-2013",
+      "title": "La Difunta",
+      "artist": "Silvestre Dangond & Rolando Ochoa",
+      "album": "La 9a Batalla",
+      "year": 2013,
+      "tags": [
+        "parranda",
+        "alegre",
+        "tradicional"
+      ],
+      "art_color": "#B94742",
+      "source_url": "https://music.apple.com/us/album/la-9a-batalla/650738381"
+    },
+    {
+      "key": "silvestre-dangond-un-amor-verdadero-2013",
+      "title": "Un Amor Verdadero",
+      "artist": "Silvestre Dangond & Rolando Ochoa",
+      "album": "La 9a Batalla",
+      "year": 2013,
+      "tags": [
+        "romantico",
+        "alegre",
+        "tradicional"
+      ],
+      "art_color": "#B94742",
+      "source_url": "https://music.apple.com/us/album/la-9a-batalla/650738381"
+    },
+    {
+      "key": "silvestre-dangond-culpa-de-los-dos-2013",
+      "title": "Culpa de los Dos",
+      "artist": "Silvestre Dangond & Rolando Ochoa",
+      "album": "La 9a Batalla",
+      "year": 2013,
+      "tags": [
+        "despecho",
+        "romantico",
+        "nostalgia"
+      ],
+      "art_color": "#B94742",
+      "source_url": "https://music.apple.com/us/album/la-9a-batalla/650738381"
+    },
+    {
+      "key": "silvestre-dangond-loco-paranoico-2013",
+      "title": "Loco Paranoico",
+      "artist": "Silvestre Dangond & Rolando Ochoa",
+      "album": "La 9a Batalla",
+      "year": 2013,
+      "tags": [
+        "romantico",
+        "alegre",
+        "coqueteo"
+      ],
+      "art_color": "#B94742",
+      "source_url": "https://music.apple.com/us/album/la-9a-batalla/650738381"
+    },
+    {
+      "key": "silvestre-dangond-la-varita-de-san-jose-2013",
+      "title": "La Varita de San José",
+      "artist": "Silvestre Dangond & Rolando Ochoa",
+      "album": "La 9a Batalla",
+      "year": 2013,
+      "tags": [
+        "parranda",
+        "alegre",
+        "tradicional"
+      ],
+      "art_color": "#B94742",
+      "source_url": "https://music.apple.com/us/album/la-9a-batalla/650738381"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+# Versiones resueltas en el venv local, incluidas dependencias transitivas.
+# Python 3.12-3.14 de 64 bits. Instalar exclusivamente en venv.
+asgiref==3.12.1
+cloudpickle==3.1.2
+Django==5.2.18
+joblib==1.6.0
+narwhals==2.27.1
+numpy==2.5.4
+scikit-learn==1.9.1
+scipy==1.18.1
+sqlparse==0.6.0
+threadpoolctl==3.7.0
+tzdata==2026.5
+waitress==3.0.2
+whitenoise==6.12.0

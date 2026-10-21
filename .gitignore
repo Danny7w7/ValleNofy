@@ -1,0 +1,35 @@
+# Entornos y dependencias locales
+venv/
+.venv/
+node_modules/
+
+# Datos privados y archivos generados
+*.sqlite3
+*.sqlite3-journal
+*.sqlite3-wal
+*.sqlite3-shm
+.local-secret
+.env
+.env.*
+!.env.example
+.setup-state.json
+*.log
+Backend/staticfiles/
+Frontent/dist/
+
+# Python y herramientas
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.ruff_cache/
+.cache/
+.vite/
+
+# Editor y sistema
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
